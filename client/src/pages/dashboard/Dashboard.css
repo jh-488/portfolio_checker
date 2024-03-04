@@ -1,0 +1,130 @@
+.dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--beige);
+}
+
+.dashboard .user_info,  .dashboard .user_coins{
+    height: 100vh;
+    border: 2px solid var(--light-green);
+    border-radius: 10px;
+}
+
+.dashboard .user_info {
+    flex: .3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.dashboard .user_info .sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard .user_info .sections button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 2rem 3rem;
+}
+
+.dashboard .user_info .logout button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--red);
+    border-color: var(--light-blue);
+}
+
+.dashboard .user_info .logout img {
+    width: 25px;
+}
+
+.dashboard .user_coins {
+    flex: 1;
+    padding: 2rem;
+}
+
+
+@media (max-width: 1400px) {
+    .dashboard .user_info .sections button {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 780px) {
+    .dashboard {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        height: 100vh;
+    }
+
+    .dashboard h1 {
+        font-size: 2.5rem;
+    }
+    
+    .dashboard .user_info {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .dashboard .user_info .sections {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .dashboard .user_info .sections button {
+        width: 15rem;
+        padding: 2rem 0;
+    }
+    
+    .dashboard .user_coins {
+        width: 100%;
+    }
+}
+
+@media (max-height: 700px) {
+    .dashboard {
+        height: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .dashboard h1 {
+        font-size: 2rem;
+    }
+    
+    .dashboard .user_info .sections {
+        gap: 5px;
+    }
+    
+    .dashboard .user_info .sections button {
+        width: 10rem;
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .dashboard .user_info .sections button {
+        width: 10rem;
+        padding: 1rem 0;
+    }
+
+    .dashboard .user_info .logout img {
+        width: 15px;
+    }
+
+    .dashboard .user_info .logout button {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+

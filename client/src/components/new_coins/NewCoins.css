@@ -1,0 +1,75 @@
+.new_coins {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+    height: 100%;
+    animation: fadeInOut 1s ease-in-out;
+}
+
+.new_coins_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.new_coins_info .user_inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.new_coins_info label {
+    font-size: 1.5rem;
+}
+
+.new_coins_info input {
+    padding: 20px;
+    background-color: var(--beige);
+    border: 1px solid var(--beige);
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+
+.new_coins .results_list {
+    width: 100%;
+    background-color: var(--beige);
+    color: var(--blue);
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 0 0 rgba(241, 250, 218, 1);
+    border-radius: 10px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+    z-index: 1;
+    position: absolute;
+}
+
+.new_coins .results_list .result {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.new_coins .results_list .result:hover {
+    background-color: var(--light-blue);
+    color: var(--beige);
+}
+
+.new_coins button {
+    z-index: 0;
+    padding: 20px 50px;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 1300px) {
+    .new_coins_info .user_inputs {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
