@@ -6,14 +6,13 @@ dotenv.config();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const RedisStore = require("connect-redis").default
-
+const FileStore = require('session-file-store')(session);
+const path = require('path');
+const fs = require('fs');
 
 const UserRoutes = require("./routes/UserRoutes");
 
 const app = express();
-
-app.set('trust proxy', 1);
 
 app.use(express.json());
 app.use(cors({
@@ -24,15 +23,29 @@ app.use(cors({
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Create sessions directory (if it doesn't exist)
+const sessionsDir = path.join(__dirname, 'sessions');
+try {
+  if (!fs.existsSync(sessionsDir)) {
+    fs.mkdirSync(sessionsDir);
+  }
+} catch (err) {
+  console.error('Error creating sessions directory:', err);
+  process.exit(1); 
+}
+
+const fileStore = new FileStore({
+  path: sessionsDir,
+});
+
 app.use(session({
     name: "userId",
     key: "userId",
-    store: new RedisStore(),
+    store: fileStore,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: true,
         expires: 7 * 24 * 3600 * 1000, // 1 week
     }
 }));
