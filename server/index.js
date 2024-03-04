@@ -15,11 +15,7 @@ const UserRoutes = require("./routes/UserRoutes");
 const app = express();
 
 app.use(express.json());
-app.use(cors({
-    origin: ["http://localhost:5173", "https://portfolio-checker.onrender.com", "https://*/portfoliochecker.netlify.app/"],
-    methods: ["GET", "POST"],
-    credentials: true
-}));
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
