@@ -6,10 +6,14 @@ dotenv.config();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const RedisStore = require("connect-redis").default
+
 
 const UserRoutes = require("./routes/UserRoutes");
 
 const app = express();
+
+app.set('trust proxy', 1);
 
 app.use(express.json());
 app.use(cors({
@@ -21,11 +25,14 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
+    name: "userId",
     key: "userId",
+    store: new RedisStore(),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
+        secure: true,
         expires: 7 * 24 * 3600 * 1000, // 1 week
     }
 }));
